@@ -1,20 +1,22 @@
+# --- Initial Output --- #
+
 # --- Bash Prompt --- #
 
-function git_prompt() {
+function git_branch() {
     if [ -d .git ]; then
         printf "%s" "($(git branch 2> /dev/null | awk '/\*/{print $2}'))";
     fi
 }
 
+export PS1="[\u@\h(\W)] "
+
 # --- Shell Variables --- #
 
 export HISTFILESIZE=10000 # number of lines saved
 export HISTSIZE=500 # number of commands in a session
-HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups # don't save dup commands
 
-export PS1="\n ╔╡\u@\h╞═╡\w│\n ║\n ╚═╡\#│ "
-
-# --- ALIASES --- # 
+# --- Aliases --- # 
 alias cd="clear; cd"
 
 # PATH:
