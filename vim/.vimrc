@@ -6,44 +6,44 @@
 
 call plug#begin('~/.vim/plugged') " vim-plug
 
-" ------------
-" colorschemes
-" ------------
-
-Plug 'mathofprimes/wildgrass'
-    let g:sonokai_style = 'espresso'
+    " ------------
+    " colorschemes
+    " ------------
     
-Plug 'sainnhe/gruvbox-material'
-    let g:gruvbox_material_background = 'soft'  
-    let g:gruvbox_material_palette = 'original'
-    let g:gruvbox_material_ui_contrast = 'low'
+    Plug 'mathofprimes/wildgrass'
+        let g:wildgrass_dark = 'teal'
+        let g:wildgrass_light = 'pear'
+        let g:wildgrass_contrast = 'hard'
+    
+    Plug 'sainnhe/gruvbox-material'
 
-Plug 'sainnhe/sonokai'
+    " ---------
+    " languages
+    " ---------
 
-" ---------
-" languages
-" ---------
+    Plug 'JuliaEditorSupport/julia-vim' " julia 
 
-Plug 'JuliaEditorSupport/julia-vim' " julia 
+    Plug 'lervag/vimtex' " latex
+        if !exists('g:ycm_semantic_triggers') " enable ycm for latex
+            let g:ycm_semantic_triggers = {}
+        endif
+        au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
-Plug 'lervag/vimtex' " latex
-    if !exists('g:ycm_semantic_triggers') " enable ycm for latex
-        let g:ycm_semantic_triggers = {}
-    endif
-    au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+    " -------
+    " general
+    " -------
 
-" -------
-" general
-" -------
-
-Plug 'LunarWatcher/auto-pairs' " auto close commas/brackets/etc
-Plug 'tabnine/YouCompleteMe' " ycm w/ tabnine ai
-Plug 'tpope/vim-fugitive' " git branch
+    Plug 'LunarWatcher/auto-pairs' " auto close commas/brackets/etc
+    Plug 'tabnine/YouCompleteMe' " ycm w/ tabnine ai
+    Plug 'tpope/vim-fugitive' " git branch
 
 call plug#end()
 
 packadd! matchit " jump between opening/closing statements with [ and ]. 
                  " needed to enable this feature for the julia plugin
+
+set textwidth=100
+
 
 " ==========================================================================
 " file browsing
@@ -74,7 +74,8 @@ set statusline+=\ col\ %c\ row\ %l\ of\ %L\ | " output 'col x row y of line'
 " Various 
 " ==========================================================================
 
-colorscheme wildgrass " enable gruvbox colorscheme plugin
+set background=dark
+colorscheme wildgrass
 filetype plugin indent on 
 syntax on
 
@@ -89,13 +90,18 @@ syntax on
 " ---------
 
 set nocompatible " disable vi compatibility
+set noinsertmode " don't use insert mode as default mode
+
+
 
 " 2 -- MOVING AROUND, SEARCHING AND PATTERNS --
 
-set autochdir
-set incsearch 
-set ignorecase 
-set smartcase 
+set startofline " jump commands move cursor to first non-blank char of a line
+set cdhome " cd w/o arguments goes to home directory
+set autochdir " change to directory of file in buffer 
+set incsearch " show match for partly typed search command 
+set ignorecase " ignore case when using a search command
+set smartcase  " override ignorecase when using a search pattern
 
 " 3 -- TAGS --
 
@@ -106,8 +112,6 @@ set number
 set relativenumber
 
 " 5 -- SYNTAX, HIGHLIGHTING AND SPELLING --
-
-set background=dark
 
 set hlsearch
 set termguicolors
