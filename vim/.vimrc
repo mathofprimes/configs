@@ -9,19 +9,15 @@ call plug#begin('~/.vim/plugged') " vim-plug
     " ------------
     " colorschemes
     " ------------
-    
+
     Plug 'mathofprimes/wildgrass'
         let g:wildgrass_dark = 'teal'
         let g:wildgrass_light = 'pear'
         let g:wildgrass_contrast = 'hard'
     
-    Plug 'sainnhe/gruvbox-material'
-
     " ---------
     " languages
     " ---------
-
-    Plug 'JuliaEditorSupport/julia-vim' " julia 
 
     Plug 'lervag/vimtex' " latex
         if !exists('g:ycm_semantic_triggers') " enable ycm for latex
@@ -34,7 +30,8 @@ call plug#begin('~/.vim/plugged') " vim-plug
     " -------
 
     Plug 'LunarWatcher/auto-pairs' " auto close commas/brackets/etc
-    Plug 'tabnine/YouCompleteMe' " ycm w/ tabnine ai
+    Plug 'sheerun/vim-polyglot' " syntax support for multiple languages
+    Plug 'tabnine/YouCompleteMe' " ycm with tabnine ai
     Plug 'tpope/vim-fugitive' " git branch
 
 call plug#end()
@@ -107,7 +104,7 @@ set smartcase  " override ignorecase when using a search pattern
 
 " 4 -- DISPLAYING TEXT --
 
-set scroll=5
+set scroll=5 " ctrl-d and ctrl-u scroll down, up by 5
 set number
 set relativenumber
 
