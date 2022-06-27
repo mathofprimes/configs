@@ -1,52 +1,65 @@
-" vimrc
+" My .vimrc file
 
 " ==========================================================================
-" plugins
+" Plugins
 " ==========================================================================
 
-call plug#begin('~/.vim/plugged') " vim-plug
+" Using vim-plug for third-party plugins. Plugins group with configurations
+" I've made to them, or other relevant settings
+call plug#begin('~/.vim/plugged')
 
     " ------------
-    " colorschemes
+    " Colorschemes
     " ------------
 
     Plug 'mathofprimes/wildgrass'
         let g:wildgrass_dark = 'teal'
         let g:wildgrass_light = 'pear'
-        let g:wildgrass_contrast = 'hard'
+        let g:wildgrass_contrast = 'medium'
     
-    " ---------
-    " languages
-    " ---------
+        set background=dark
+        colorscheme wildgrass
+    
+    " ----------------
+    " Language Plugins:
+    " ----------------
 
-    Plug 'lervag/vimtex' " latex
-        if !exists('g:ycm_semantic_triggers') " enable ycm for latex
+    Plug 'lervag/vimtex'
+        " This enables YCM for LaTeX
+        if !exists('g:ycm_semantic_triggers') 
             let g:ycm_semantic_triggers = {}
         endif
         au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
+    " Syntax support for a bunch of languages.
+    Plug 'sheerun/vim-polyglot' 
+    
     " -------
-    " general
+    " General Plugins:
     " -------
 
-    Plug 'LunarWatcher/auto-pairs' " auto close commas/brackets/etc
-    Plug 'sheerun/vim-polyglot' " syntax support for multiple languages
-    Plug 'tabnine/YouCompleteMe' " ycm with tabnine ai
-    Plug 'tpope/vim-fugitive' " git branch
+    " Autocomplete commas/brackets/etc.
+    Plug 'LunarWatcher/auto-pairs' 
+    
+    " YCM autocomplete with help from Tabnine AI.
+    Plug 'tabnine/YouCompleteMe' 
+    
+    " Show git branch.
+    Plug 'tpope/vim-fugitive' 
 
+" End vim-plug
 call plug#end()
 
 packadd! matchit " jump between opening/closing statements with [ and ]. 
                  " needed to enable this feature for the julia plugin
 
-set textwidth=100
 
 
 " ==========================================================================
-" file browsing
+" File browsing
 " ==========================================================================
 
-" netrw
+" Vim's Netrw file browser for file browsing.
 
 let g:netrw_banner = 0
 let g:netrw_altv = 1 
@@ -71,10 +84,9 @@ set statusline+=\ col\ %c\ row\ %l\ of\ %L\ | " output 'col x row y of line'
 " Various 
 " ==========================================================================
 
-set background=dark
-colorscheme wildgrass
 filetype plugin indent on 
 syntax on
+set textwidth=100
 
 " ==========================================================================
 " Options
@@ -88,8 +100,6 @@ syntax on
 
 set nocompatible " disable vi compatibility
 set noinsertmode " don't use insert mode as default mode
-
-
 
 " 2 -- MOVING AROUND, SEARCHING AND PATTERNS --
 
