@@ -9,23 +9,20 @@
 call plug#begin('~/.vim/plugged')
 
     " ------------
-    " Colorschemes
+    " Colorschemes 
     " ------------
-
-    Plug 'mathofprimes/wildgrass'
+    
+    Plug 'mathofprimes/wildgrass-vim'
         let g:wildgrass_dark = 'teal'
         let g:wildgrass_light = 'pear'
-        let g:wildgrass_contrast = 'medium'
-    
-        set background=dark
-        colorscheme wildgrass
+        let g:wildgrass_contrast = 'hard'
     
     " ----------------
     " Language Plugins:
     " ----------------
 
     Plug 'lervag/vimtex'
-        " This enables YCM for LaTeX
+        " Enables YCM for LaTeX
         if !exists('g:ycm_semantic_triggers') 
             let g:ycm_semantic_triggers = {}
         endif
@@ -53,8 +50,6 @@ call plug#end()
 packadd! matchit " jump between opening/closing statements with [ and ]. 
                  " needed to enable this feature for the julia plugin
 
-
-
 " ==========================================================================
 " File browsing
 " ==========================================================================
@@ -68,7 +63,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4 
 
 " ==========================================================================
-" statusline
+" Statusline
 " ==========================================================================
 
 " statusline
@@ -87,6 +82,8 @@ set statusline+=\ col\ %c\ row\ %l\ of\ %L\ | " output 'col x row y of line'
 filetype plugin indent on 
 syntax on
 set textwidth=100
+colorscheme wildgrass
+set background=dark
 
 " ==========================================================================
 " Options
