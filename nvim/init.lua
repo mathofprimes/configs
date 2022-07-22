@@ -1,13 +1,19 @@
 -- Everything else is organized by :options.
 
--- 1 - IMPORTANT
+-- 1 - IMPORTANT:
+
 vim.o.compatible = false -- Disable Vi compatibility.
 vim.o.insertmode = false -- Don't use insert as default mode.
 
--- 2 MOVING AROUND, SEARCHING AND PATTERNS
+-- 2 MOVING AROUND, SEARCHING AND PATTERNS:
 
 vim.o.startofline = true -- Jumping moves cursor to first non-blank char of line.
-vim.o.cdhome = true -- CD w/o arguments goes to home directory
+vim.o.cdhome = true -- cd without arguments goes to home directory.
+vim.o.autochdir = true -- Change to directory of file in buffer.
+vim.o.incsearch = true -- Show match for partly typed word.
+vim.o.ignorecase = true -- Ignore case of searched word.
+vim.o.smartcase = true -- Override 'ignorecase' when search patterns are uppercase.
+
 
 -- 3 TAGS
 
@@ -16,12 +22,24 @@ vim.o.cdhome = true -- CD w/o arguments goes to home directory
 vim.o.scroll = 5 -- CTRL-D and CTRL-U scroll by 5.
 vim.o.number = true -- Display line numbers.
 vim.o.relativenumber = true -- Display relative numbers.
+vim.o.spell = true -- Show spelling mistakes.
+vim.o.spelllang = en_us -- Use U.S. English.
+
 
 -- 5 SYNTAX, HIGHLIGHTING AND SPELLING
+
+vim.o.hlsearch = false -- Don't highlight previous search pattern.
+vim.o.cursorcolumn = true -- Show cursor's vertical location.
+vim.o.cursorline = true -- Show cursor's horizontal location.
+
+
 -- 6 MULTIPLE WINDOWS
 -- 7 MULTIPLE TAB PAGES
 -- 8 TERMINAL
 -- 9 USING THE MOUSE
+
+vim.o.mouse = a -- Clicking mouse moves cursor.
+
 -- 10 PRINTING
 -- 11 MESSAGES AND INFO
 -- 12 SELECTING TEXT
