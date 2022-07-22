@@ -1,4 +1,23 @@
--- Everything else is organized by :options.
+-- PLUGINS
+
+-- Use Packer for plugins.
+
+require('packer').startup(
+  function()
+    -- Packer can manage itself.
+    use 'wbthomason/packer.nvim'
+
+    -- COLORSCHEMES:
+
+    -- Gruvbox.
+    use 'ellisonleao/gruvbox.nvim' 
+  
+  end
+)
+
+-- OTHER SETTINGS:
+vim.cmd [[ colorscheme gruvbox ]] -- Set Gruvbox colorscheme. 
+vim.o.background = 'dark' -- Set backgroud to dark.
 
 -- 1 - IMPORTANT:
 
@@ -38,7 +57,7 @@ vim.o.cursorline = true -- Show cursor's horizontal location.
 -- 8 TERMINAL
 -- 9 USING THE MOUSE
 
-vim.o.mouse = a -- Clicking mouse moves cursor.
+vim.o.mouse = 'a' -- Clicking mouse moves cursor.
 
 -- 10 PRINTING
 -- 11 MESSAGES AND INFO
